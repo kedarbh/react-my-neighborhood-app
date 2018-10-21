@@ -1,15 +1,107 @@
-.App {
-  text-align: center;
-  display: flex;
+body {
+    color: #404040;
+    font: 400 14px 'Source Sans Pro', 'Helvetica Neue', Sans-serif;
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+}
+
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+a{
+    text-decoration: none;
+}
+
+h2 {
+    font-size: 22px;
+    margin: 0;
+    font-weight: 400;
+    line-height: 20px;
+    padding: 20px 2px;
+}
+
+.map {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    height: 70vh;
+    width: 70vw;
+    left: 30vw;
 }
 
 .sidebar {
-  height: 100vh;
-  width: 40vw;
-  background-color: #c9d4ec;
+    position: absolute;
+    width: 30vw;
+    height: 100%;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    border-right: 1px solid rgba(0, 0, 0, 0.25);
 }
-.map {
-  height: 100vh;
-  width: 60vw;
-  background-color: #b8b6b2;
+
+.heading {
+    border-bottom: 1px solid #ccc;
+    height: 60px;
+    line-height: 60px;
+    padding: 0 10px;
+}
+
+.listings {
+    height: 100vh;
+    overflow: auto;
+    padding-bottom: 60px;
+}
+
+.listings .item {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(min-content, 1fr));
+    grid-template-rows: auto;
+    grid-template-areas:"name name name"
+                        "details details image";
+    border-bottom: 1px solid #eee;
+    padding: 10px;
+    text-decoration: none;
+}
+
+.listings .item:last-child { border-bottom: none; }
+
+.title {
+    font-weight: 700;
+    grid-area: name;
+    font-size: 20px;
+    margin: 0;
+}
+
+.listings .item .title a, .listings .item .title a:visited { color: #00853e; }
+.listings .item .title a:hover { color: #8cc63f; }
+
+.listings .item.active {
+    background-color: #f8f8f8;
+}
+
+.item-details {
+    grid-area: details;
+}
+
+.listing-image {
+    grid-column: image;
+}
+
+.search {
+    padding: 10px 20px;
+}
+
+input[type=text] {
+    width: 100%;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    outline: none;
+}
+
+input[type=text]:focus {
+    border: 3px solid #555;
 }
