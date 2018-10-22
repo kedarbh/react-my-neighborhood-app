@@ -171,7 +171,7 @@ class App extends Component {
             closeNav={this.closeNav}
           />
         </aside>
-        <div className="map">
+        <div className="map" role="application">
           <ReactMapGL
             {...this.state.viewport}
             onViewportChange={this.onViewportChange}
