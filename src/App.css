@@ -34,7 +34,7 @@ h2 {
 }
 
 .sidebar {
-    background: #fff;
+    /* background: #fff; */
     position: absolute;
     width: 30vw;
     height: 100vh;
@@ -42,7 +42,7 @@ h2 {
     top: 0;
     left: 0;
     overflow: auto;
-    border-right: 1px solid rgba(0, 0, 0, 0.25);
+    /* border-right: 1px solid rgba(0, 0, 0, 0.25); */
 }
 
 .top-bar {
@@ -50,6 +50,7 @@ h2 {
     flex-direction: row;
     justify-content: space-between;
     border-bottom: 1px solid #ccc;
+    background: #fff;
 }
 
 .heading {
@@ -93,6 +94,10 @@ h2 {
     background-color: #f8f8f8;
 }
 
+.item:nth-of-type(n) {
+    background: #fff;
+}
+
 .item:nth-of-type(n) + .item:nth-of-type(odd){
     background: #fff;
 }
@@ -129,10 +134,57 @@ input[type=text]:focus {
         flex-direction: column;
     }
 }
-@media only screen and (max-width: 550px) {
+/* @media only screen and (max-width: 550px) {
     .sidebar {
         width: 50vw;
     }
+} */
+
+
+/* navigation */
+.openbtn {
+    font-size: 30px;
+    cursor: pointer;
+    color: #101d2c;
+    margin-left: 20px;
 }
 
+.closebtn {
+    color: #101d2c;
+    position: absolute;
+    top: 20px;
+    right: 1px;
+    font-size: 36px;
+    margin-left: 50px;
+    cursor: pointer;
+    background: #fff;
+    padding: 0 20px;
+}
+.closebtn:hover {
+    color: #f1f1f1;
+}
 
+.location {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 99999;
+    top: -20px;
+    left: 0;
+    /* background-color: #4caf50; */
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+.location a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #101d2c;
+    display: block;
+    transition: 0.3s;
+}
+.location a:hover {
+    color: #f1f1f1;
+
+}

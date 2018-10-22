@@ -134,18 +134,41 @@ class App extends Component {
     }
   }
 
+  //open navigation menu
+
+  openNav = () => {
+    function changeSize(x){
+      if(x.matches) {
+        document.getElementById('location').style.width = "50%";
+      } else {
+        document.getElementById('location').style.width = "30%";
+      }
+    }
+
+    let x = window.matchMedia("(max-width: 600px)")
+    changeSize(x)
+    x.addListener(changeSize)
+
+    document.getElementById('openbtn').style.display = "none";
+  }
+  closeNav = () => {
+    document.getElementById('location').style.width = "0";
+    document.getElementById('openbtn').style.display = "block";
+  }
 
   render() {
     const { query, venues, error } = this.state;
 
     return (
       <div className="app">
-        <aside className="sidebar">
+        <aside id="sidebar" className="sidebar">
+          <span id="openbtn" className="openbtn" onClick={this.openNav}>&#9776;</span>
           <Sidebar query={query}
             error={error}
             venues={venues}
             updateQuery={this.updateQuery}
             getLocation={this.getLocation}
+            closeNav={this.closeNav}
           />
         </aside>
         <div className="map">

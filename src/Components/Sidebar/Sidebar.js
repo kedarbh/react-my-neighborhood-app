@@ -4,10 +4,11 @@ import { DebounceInput } from 'react-debounce-input'
 class Sidebar extends Component {
 
   render() {
-    const { query, updateQuery, error, venues, getLocation } = this.props;
+    const { query, updateQuery, error, venues, getLocation, closeNav } = this.props;
 
     return (
-      <div className="location">
+      <div id="location" className="location">
+      <span className="closebtn" onClick={closeNav}>&times;</span>
         <div className="top-bar">
           <h2 className="heading">Food Lands</h2>
           <div className="search">
