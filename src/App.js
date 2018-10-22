@@ -4,8 +4,7 @@ import './App.css';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import LocationPin from './LocationPin';
 import LocationInfo from './LocationInfo';
-// import SidebarLocation from './SidebarLocation';
-// import Location from './data/Location.json';
+import Sidebar from './Components/Sidebar/Sidebar'
 import escapeRegExp from 'escape-string-regexp';
 
 //mapbox API credentials
@@ -54,13 +53,14 @@ class App extends Component {
   };
 
   locationMarkerHandler = (location, index) => {
-    // console.log(location.location)
     const latitude = location.location.lat;
     const longitude = location.location.lng;
     return (
       <Marker key={`marker-${index}`}
         longitude={longitude}
-        latitude={latitude}>
+        latitude={latitude}
+        offsetLeft={-17}
+        offsetTop={-10}>
         <LocationPin size={32} onClick={() => this.setState({ popupInfo: location })} />
       </Marker>
     );
@@ -107,7 +107,6 @@ class App extends Component {
       })
   }
 
-
   eventHandler = (location) => {
     this.setState({ popupInfo: location });
     this.goToViewport(location.location.lng, location.location.lat);
@@ -141,39 +140,14 @@ class App extends Component {
 
     return (
       <div className="app">
-        <div className="sidebar">
-          <div className="location">
-            <div className="top-bar">
-              <h2 className="heading">Food Lands</h2>
-              <div className="search">
-                <input
-                  type="text"
-                  role="search"
-                  aria-label="search"
-                  placeholder="Search Here"
-                  tabIndex="0"
-                  className="search-field"
-                  value={query}
-                  onChange={(event) => this.updateQuery(event.target.value)}
-                />
-              </div>
-            </div>
-
-
-            <div id="listings" className="listings">
-              {!error && venues.map(this.getLocation)}
-              {error &&
-                <div className="error-message">
-                  <p>Sorry no results found. Your search '<b>{query}</b>' did not match.</p>
-                  <p>Venue List is obtained using Foursquare API</p>
-                </div>
-              }
-            </div>
-
-          </div>
-
-
-        </div>
+        <aside className="sidebar">
+          <Sidebar query={query}
+            error={error}
+            venues={venues}
+            updateQuery={this.updateQuery}
+            getLocation={this.getLocation}
+          />
+        </aside>
         <div className="map">
           <ReactMapGL
             {...this.state.viewport}
